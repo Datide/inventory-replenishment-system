@@ -32,8 +32,8 @@ builder.Services.AddScoped<IReplenishmentRule>(
     _ => new ConsecutiveDaysReplenishmentRule(requiredConsecutiveDays: 2));
 builder.Services.AddScoped<ReplenishmentService>();
 
-// --- Login notification (config-driven; silent no-op unless Datide:Notify is set) ---
-builder.Services.AddSingleton<LoginNotifier>();
+// --- Login activity log (local-only, credential-free; replaces the withdrawn SMTP notifier) ---
+builder.Services.AddSingleton<LoginActivityLog>();
 
 // --- Cookie authentication (username + password, role-based) ---
 builder.Services
@@ -109,6 +109,14 @@ app.MapGet("/set-language", (HttpContext http, string culture, string returnUrl)
         });
 
     return Results.Redirect(string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl);
+});
+
+// --- Read-only demo activity endpoint (anonymous, low-information, credential-free) ---
+// Exposes only: total login count, timestamps, public demo usernames and
+// /24-masked IPs. No credentials, no full IPs. An external poller reads this.
+app.MapGet("/demo-activity", (LoginActivityLog log) =>
+{
+    return Results.Text(log.GetActivitySummary(), "text/plain; charset=utf-8");
 });
 
 app.MapRazorPages();

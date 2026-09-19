@@ -17,16 +17,16 @@ public class LoginModel : PageModel
 {
     private readonly ReplenishmentDbContext _db;
     private readonly IStringLocalizer<SharedResource> _localizer;
-    private readonly LoginNotifier _notifier;
+    private readonly LoginActivityLog _activityLog;
 
     public LoginModel(
         ReplenishmentDbContext db,
         IStringLocalizer<SharedResource> localizer,
-        LoginNotifier notifier)
+        LoginActivityLog activityLog)
     {
         _db = db;
         _localizer = localizer;
-        _notifier = notifier;
+        _activityLog = activityLog;
     }
 
     [BindProperty]
@@ -77,14 +77,15 @@ public class LoginModel : PageModel
             principal,
             new AuthenticationProperties { IsPersistent = false });
 
-        // Fire-and-forget owner notification, captured off the request thread so
-        // the send can never block or fail the login (LoginNotifier never throws).
-        var loginNotification = new LoginNotification(
+        // Fire-and-forget local activity log, snapshot captured on the request
+        // thread so the background write never touches HttpContext after the
+        // response completes (LoginActivityLog never throws).
+        var loginActivity = new LoginActivity(
             user.Username,
             user.Role.ToString(),
-            HttpContext.Connection.RemoteIpAddress?.ToString(),
+            LoginActivityLog.MaskIp(HttpContext.Connection.RemoteIpAddress),
             Request.Headers.UserAgent.ToString());
-        _ = Task.Run(() => _notifier.NotifyLogin(loginNotification));
+        _ = Task.Run(() => _activityLog.Record(loginActivity));
 
         return RedirectToPage("/Index");
     }
