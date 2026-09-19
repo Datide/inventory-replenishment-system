@@ -1,0 +1,10 @@
+**/bin
+**/obj
+**/.git
+**/.vs
+**/.vscode
+**/App_Data
+**/*.user
+README.md
+README.zh-Hant.md
+tests
