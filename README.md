@@ -132,3 +132,11 @@ over-order warnings carried through to the manager screen, **stock-limit
 approval blocking** (UI disabled + server refusal), **language switching across
 EN / 繁體中文 / 简体中文** (including replenishment reason sentences), and Excel
 export — all exercised against the running app.
+
+---
+
+© 2026 Datide. All rights reserved.
+
+This repository is a portfolio demonstration. The code is provided for viewing
+purposes only and may not be copied, modified, or redistributed without written
+permission.
