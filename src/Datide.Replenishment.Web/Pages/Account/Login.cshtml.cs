@@ -39,6 +39,12 @@ public class LoginModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
+        // The login page shows the demo credentials as selectable text, and a
+        // double-click can pick up an adjacent space. Trim leading/trailing
+        // whitespace so a stray space never fails an otherwise correct login.
+        Username = (Username ?? string.Empty).Trim();
+        Password = (Password ?? string.Empty).Trim();
+
         if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
         {
             ErrorMessage = _localizer["Username and password are required."];
