@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="(exceeds required)" xml:space="preserve">
+    <value>(超过所需)</value>
+  </data>
+  <data name="(reference from when PO was created)" xml:space="preserve">
+    <value>(创建 PO 时捕获的参考值)</value>
+  </data>
+  <data name="Access denied" xml:space="preserve">
+    <value>拒绝访问</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>启用中</value>
+  </data>
+  <data name="Already on order" xml:space="preserve">
+    <value>已订购</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>待审批</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>批准</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>已批准</value>
+  </data>
+  <data name="Approving this PO would push {0} over its stock limit: current stock {1} + in-flight {2} = {3}, which exceeds the limit {4} by {5} units. Approval is blocked — reject this PO or ask staff to revise the quantity." xml:space="preserve">
+    <value>批准此采购单会使 {0} 超出库存上限：当前库存 {1} + 已订未入库 {2} = {3}，超出上限 {4} 共 {5} 个单位。批准已被阻止 — 请拒绝此单或要求职员修改数量。</value>
+  </data>
+  <data name="Back to Dashboard" xml:space="preserve">
+    <value>返回仪表板</value>
+  </data>
+  <data name="Back to POs" xml:space="preserve">
+    <value>返回采购单</value>
+  </data>
+  <data name="Below reorder" xml:space="preserve">
+    <value>低于补货点</value>
+  </data>
+  <data name="Below reorder point" xml:space="preserve">
+    <value>低于补货点</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Cannot approve — exceeds stock limit" xml:space="preserve">
+    <value>无法批准 — 超出库存上限</value>
+  </data>
+  <data name="Check complete — {0} SKU(s) need replenishment." xml:space="preserve">
+    <value>检查完成 — {0} 个 SKU 需要补货。</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="Code &#x27;{0}&#x27; already exists." xml:space="preserve">
+    <value>编号 &#x27;{0}&#x27; 已存在。</value>
+  </data>
+  <data name="Create PO" xml:space="preserve">
+    <value>创建采购单</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>当前</value>
+  </data>
+  <data name="Current stock levels" xml:space="preserve">
+    <value>当前库存水平</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>仪表板</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="Demo accounts" xml:space="preserve">
+    <value>演示账户</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="Download datide_export.xlsx" xml:space="preserve">
+    <value>下载 datide_export.xlsx</value>
+  </data>
+  <data name="Downloads an .xlsx workbook with one sheet per table (SKUs, Users, Stock Snapshots, Purchase Orders)." xml:space="preserve">
+    <value>下载一个 .xlsx 工作簿，每个数据表一个工作表（SKU、用户、库存快照、采购单）。</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>草稿</value>
+  </data>
+  <data name="Draft — not yet submitted" xml:space="preserve">
+    <value>草稿 — 尚未提交</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Edit PO {0}" xml:space="preserve">
+    <value>编辑采购单 {0}</value>
+  </data>
+  <data name="Edit Purchase Order" xml:space="preserve">
+    <value>编辑采购单</value>
+  </data>
+  <data name="Edit SKU — {0}" xml:space="preserve">
+    <value>编辑 SKU — {0}</value>
+  </data>
+  <data name="Exceeds stock limit" xml:space="preserve">
+    <value>超出库存上限</value>
+  </data>
+  <data name="Exceeds system-required quantity" xml:space="preserve">
+    <value>超过系统建议数量</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="Export Excel" xml:space="preserve">
+    <value>导出 Excel</value>
+  </data>
+  <data name="Export database to Excel" xml:space="preserve">
+    <value>将数据库导出至 Excel</value>
+  </data>
+  <data name="Gross need" xml:space="preserve">
+    <value>总需求</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>已停用</value>
+  </data>
+  <data name="Invalid username or password." xml:space="preserve">
+    <value>用户名或密码错误。</value>
+  </data>
+  <data name="Inventory Dashboard" xml:space="preserve">
+    <value>库存仪表板</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Limit" xml:space="preserve">
+    <value>上限</value>
+  </data>
+  <data name="Log out" xml:space="preserve">
+    <value>登出</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>经理</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+    <value>上限</value>
+  </data>
+  <data name="New PO" xml:space="preserve">
+    <value>新建采购单</value>
+  </data>
+  <data name="New Purchase Order" xml:space="preserve">
+    <value>新建采购单</value>
+  </data>
+  <data name="New SKU" xml:space="preserve">
+    <value>新建 SKU</value>
+  </data>
+  <data name="No open PO — safe to create." xml:space="preserve">
+    <value>没有进行中的采购单 — 可以创建。</value>
+  </data>
+  <data name="No purchase orders awaiting approval." xml:space="preserve">
+    <value>没有待审批的采购单。</value>
+  </data>
+  <data name="No purchase orders yet." xml:space="preserve">
+    <value>还没有采购单。</value>
+  </data>
+  <data name="No replenishment needed — all SKUs are healthy." xml:space="preserve">
+    <value>无需补货 — 所有 SKU 库存正常。</value>
+  </data>
+  <data name="No system reference — SKU was not flagged for replenishment." xml:space="preserve">
+    <value>没有系统参考值 — 此 SKU 未被标记需要补货。</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>正常</value>
+  </data>
+  <data name="Only draft POs can be edited." xml:space="preserve">
+    <value>只有草稿状态的采购单可以编辑。</value>
+  </data>
+  <data name="Over-order" xml:space="preserve">
+    <value>超量订购</value>
+  </data>
+  <data name="PO" xml:space="preserve">
+    <value>采购单</value>
+  </data>
+  <data name="PO #" xml:space="preserve">
+    <value>采购单号</value>
+  </data>
+  <data name="PO Approvals" xml:space="preserve">
+    <value>采购单审批</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>待处理</value>
+  </data>
+  <data name="Pending PO approvals" xml:space="preserve">
+    <value>待审批采购单</value>
+  </data>
+  <data name="Pending POs" xml:space="preserve">
+    <value>待处理采购单</value>
+  </data>
+  <data name="Pending approval" xml:space="preserve">
+    <value>待审批</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>单价</value>
+  </data>
+  <data name="Purchase Orders" xml:space="preserve">
+    <value>采购单</value>
+  </data>
+  <data name="Qty" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="Quantity ({0}) is LESS than the system-required amount ({1})." xml:space="preserve">
+    <value>数量 ({0}) 低于系统建议数量 ({1})。</value>
+  </data>
+  <data name="Quantity exceeds system-required amount" xml:space="preserve">
+    <value>数量超过系统建议数量</value>
+  </data>
+  <data name="Quantity is below the system-required amount ({0}). You will be asked to confirm before saving." xml:space="preserve">
+    <value>数量低于系统建议数量 ({0})。保存前会要求你确认。</value>
+  </data>
+  <data name="Quantity must be greater than zero." xml:space="preserve">
+    <value>数量必须大于零。</value>
+  </data>
+  <data name="Reactivate" xml:space="preserve">
+    <value>重新启用</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>原因</value>
+  </data>
+  <data name="Reason for rejection:" xml:space="preserve">
+    <value>拒绝原因：</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>拒绝</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>已拒绝</value>
+  </data>
+  <data name="Rejected by manager" xml:space="preserve">
+    <value>已被经理拒绝</value>
+  </data>
+  <data name="Reorder" xml:space="preserve">
+    <value>补货点</value>
+  </data>
+  <data name="Replenishment decision system — sign in to continue" xml:space="preserve">
+    <value>补货决策系统 — 请登录以继续</value>
+  </data>
+  <data name="Replenishment suggestions" xml:space="preserve">
+    <value>补货建议</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>申请时间</value>
+  </data>
+  <data name="Requested by" xml:space="preserve">
+    <value>申请人</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>建议数量</value>
+  </data>
+  <data name="Run Replenishment Check" xml:space="preserve">
+    <value>执行补货检查</value>
+  </data>
+  <data name="SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="SKU Management" xml:space="preserve">
+    <value>SKU 管理</value>
+  </data>
+  <data name="SKUs" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="SKUs tracked" xml:space="preserve">
+    <value>追踪中 SKU</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Save changes" xml:space="preserve">
+    <value>保存更改</value>
+  </data>
+  <data name="Save draft" xml:space="preserve">
+    <value>保存草稿</value>
+  </data>
+  <data name="Select a SKU to see its details." xml:space="preserve">
+    <value>选择一个 SKU 以查看详情。</value>
+  </data>
+  <data name="Selected SKU not found or inactive." xml:space="preserve">
+    <value>找不到所选 SKU 或已停用。</value>
+  </data>
+  <data name="Sign in" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="Staff" xml:space="preserve">
+    <value>职员</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="Stock check" xml:space="preserve">
+    <value>库存检查</value>
+  </data>
+  <data name="Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s)." xml:space="preserve">
+    <value>库存 {0} 已连续 {2} 日低于或等于补货点（{1}）。</value>
+  </data>
+  <data name="Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s). Gross need {3} − already on order {4} = {5} remaining." xml:space="preserve">
+    <value>库存 {0} 已连续 {2} 日低于或等于补货点（{1}）。总需求 {3} − 已订未入库 {4} = 尚欠 {5}。</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="Submit for approval" xml:space="preserve">
+    <value>提交审批</value>
+  </data>
+  <data name="System required" xml:space="preserve">
+    <value>系统建议</value>
+  </data>
+  <data name="System required qty" xml:space="preserve">
+    <value>系统建议数量</value>
+  </data>
+  <data name="The order may not fully cover the need. Save anyway?" xml:space="preserve">
+    <value>此订单可能无法完全满足需求。仍要保存吗？</value>
+  </data>
+  <data name="This PO is no longer a draft and cannot be edited." xml:space="preserve">
+    <value>此采购单已不是草稿，无法编辑。</value>
+  </data>
+  <data name="This PO is no longer a draft." xml:space="preserve">
+    <value>此采购单已不是草稿。</value>
+  </data>
+  <data name="This SKU already has an open PO. Creating another will be blocked." xml:space="preserve">
+    <value>此 SKU 已有进行中的采购单。创建另一张将被拒绝。</value>
+  </data>
+  <data name="This order is {0} units above the system-required amount ({1})." xml:space="preserve">
+    <value>此订单超出系统建议数量 ({1}) 共 {0} 个单位。</value>
+  </data>
+  <data name="To order now" xml:space="preserve">
+    <value>建议订购</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>总计</value>
+  </data>
+  <data name="Total POs" xml:space="preserve">
+    <value>采购单总数</value>
+  </data>
+  <data name="Unit price" xml:space="preserve">
+    <value>单价</value>
+  </data>
+  <data name="Unit price / Total" xml:space="preserve">
+    <value>单价 / 总计</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="Username and password are required." xml:space="preserve">
+    <value>必须输入用户名和密码。</value>
+  </data>
+  <data name="You do not have permission to view this page." xml:space="preserve">
+    <value>你没有查看此页面的权限。</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>于</value>
+  </data>
+  <data name="e.g. SKU-1006" xml:space="preserve">
+    <value>例如 SKU-1006</value>
+  </data>
+  <data name="in-flight" xml:space="preserve">
+    <value>已订未入库</value>
+  </data>
+  <data name="⏸ {0} deactivated (history preserved)." xml:space="preserve">
+    <value>⏸ {0} 已停用（保留历史记录）。</value>
+  </data>
+  <data name="⚠️ PO {0} is no longer pending — no change made." xml:space="preserve">
+    <value>⚠️ 采购单 {0} 已不是待处理状态 — 未做更改。</value>
+  </data>
+  <data name="⚠️ PO {0} is not a draft." xml:space="preserve">
+    <value>⚠️ 采购单 {0} 不是草稿。</value>
+  </data>
+  <data name="⚠️ Quantity exceeds the system-required amount ({0}). This PO is flagged as an over-order." xml:space="preserve">
+    <value>⚠️ 数量超过系统建议数量 ({0})。此采购单被标记为超量订购。</value>
+  </data>
+  <data name="⚠️ {0} already has a draft/pending PO — edit that instead of creating another." xml:space="preserve">
+    <value>⚠️ {0} 已有草稿／待处理采购单 — 请编辑该单而非另建一张。</value>
+  </data>
+  <data name="⚠️ {0} already has a draft/pending PO. Edit that PO instead of creating another." xml:space="preserve">
+    <value>⚠️ {0} 已有草稿／待处理采购单。请编辑该单而非另建一张。</value>
+  </data>
+  <data name="✅ PO {0} approved ({1} × {2})." xml:space="preserve">
+    <value>✅ 采购单 {0} 已批准（{1} × {2}）。</value>
+  </data>
+  <data name="✅ PO {0} quantity updated to {1}." xml:space="preserve">
+    <value>✅ 采购单 {0} 数量已更新为 {1}。</value>
+  </data>
+  <data name="✅ {0} reactivated." xml:space="preserve">
+    <value>✅ {0} 已重新启用。</value>
+  </data>
+  <data name="❌ PO {0} NOT approved — it would push {1} over its stock limit. Current stock {2} + in-flight {3} = {4} exceeds limit {5} by {6}. Reject or ask staff to revise." xml:space="preserve">
+    <value>❌ 采购单 {0} 未获批准 — 会使 {1} 超出库存上限。当前库存 {2} + 已订未入库 {3} = {4}，超出上限 {5} 共 {6} 个单位。请拒绝此单或要求职员修改数量。</value>
+  </data>
+  <data name="❌ PO {0} rejected." xml:space="preserve">
+    <value>❌ 采购单 {0} 已拒绝。</value>
+  </data>
+  <data name="📤 PO {0} submitted for approval." xml:space="preserve">
+    <value>📤 采购单 {0} 已提交审批。</value>
+  </data>
+</root>

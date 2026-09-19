@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Datide.Replenishment.Domain\Datide.Replenishment.Domain.csproj" />
+    <ProjectReference Include="..\Datide.Replenishment.Application\Datide.Replenishment.Application.csproj" />
+    <ProjectReference Include="..\Datide.Replenishment.Infrastructure\Datide.Replenishment.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+
+</Project>

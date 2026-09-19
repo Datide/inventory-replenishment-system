@@ -1,0 +1,137 @@
+@page "{id:guid}"
+@model Datide.Replenishment.Web.Pages.PurchaseOrders.EditModel
+@{
+    ViewData["Title"] = @Localizer["Edit PO {0}", Model.Id.ToString("N")[..8]];
+}
+
+<style>
+    .is-warning { background-color: #fff3cd !important; border-color: #ffc107 !important; }
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card"><div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-start mb-4">
+                <div>
+                    <h1 class="h4 mb-1">@Localizer["Edit Purchase Order"]</h1>
+                    <div class="text-muted small">
+                        @Localizer["PO"] <code>@Model.Id.ToString("N")[..8]</code>
+                    </div>
+                </div>
+                <span class="badge badge-pending">@Localizer["Draft — not yet submitted"]</span>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger py-2 small">@Model.ErrorMessage</div>
+            }
+
+            @if (Model.Po is null)
+            {
+                <a class="btn btn-outline-secondary" asp-page="Index">@Localizer["Back to POs"]</a>
+            }
+            else
+            {
+                <div class="alert alert-light border small mb-4">
+                    <div><strong>@Localizer["SKU"]:</strong> @Model.Po.SkuCode</div>
+                    <div><strong>@Localizer["Unit price"]:</strong> @Model.Po.UnitPrice.ToString("C")</div>
+                    <div><strong>@Localizer["Created"]:</strong> @Model.Po.RequestedByUsername, @Model.Po.RequestedAt.ToLocalTime():g</div>
+                    @if (Model.Po.RequiredQuantity.HasValue)
+                    {
+                        <div>
+                            <strong>@Localizer["System required qty"]:</strong> @Model.Po.RequiredQuantity
+                            <span class="text-muted">@Localizer["(reference from when PO was created)"]</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-muted">@Localizer["No system reference — SKU was not flagged for replenishment."]</div>
+                    }
+                </div>
+
+                <form method="post" asp-page-handler="Save" id="editForm">
+                    <input type="hidden" name="id" value="@Model.Id" />
+
+                    <div class="mb-3">
+                        <label for="Quantity" class="form-label small fw-semibold">@Localizer["Quantity"]</label>
+                        <input asp-for="Quantity"
+                               type="number"
+                               min="1"
+                               id="qtyInput"
+                               class="form-control form-control-lg @(Model.Po.IsOverRequired ? "is-warning" : "")"
+                               data-required="@(Model.Po.RequiredQuantity?.ToString() ?? "")" />
+                        <div class="form-text" id="qtyHint"></div>
+                        <span asp-validation-for="Quantity" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">💾 @Localizer["Save draft"]</button>
+                        <button type="submit" form="submitForm" class="btn btn-success">📤 @Localizer["Submit for approval"]</button>
+                        <a class="btn btn-outline-secondary ms-auto" asp-page="Index">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+
+                @if (Model.Po.Status == Datide.Replenishment.Domain.Entities.PurchaseOrderStatus.Draft)
+                {
+                    <form method="post" asp-page-handler="Submit" id="submitForm" class="d-none">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                    </form>
+                }
+            }
+        </div></div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function () {
+            const ui = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(new {
+                overMsg = Localizer["⚠️ Quantity exceeds the system-required amount ({0}). This PO is flagged as an over-order.", "__REQ__"].Value,
+                underMsg = Localizer["Quantity is below the system-required amount ({0}). You will be asked to confirm before saving.", "__REQ__"].Value,
+                confirmTitle = Localizer["Quantity ({0}) is LESS than the system-required amount ({1}).", "__QTY__", "__REQ__"].Value,
+                confirmBody = Localizer["The order may not fully cover the need. Save anyway?"].Value,
+            }));
+            const input = document.getElementById('qtyInput');
+            const hint = document.getElementById('qtyHint');
+            const form = document.getElementById('editForm');
+            if (!input || !form) return;
+
+            const requiredRaw = input.dataset.required;
+            const required = requiredRaw === '' ? null : parseInt(requiredRaw, 10);
+
+            function refresh() {
+                const qty = parseInt(input.value, 10);
+                hint.textContent = '';
+                input.classList.remove('is-warning');
+
+                if (required === null || isNaN(qty)) {
+                    return;
+                }
+
+                if (qty > required) {
+                    // Over order → yellow warning, but save is NOT blocked.
+                    input.classList.add('is-warning');
+                    hint.innerHTML = ui.overMsg.split('__REQ__').join(required);
+                } else if (qty < required) {
+                    hint.textContent = ui.underMsg.split('__REQ__').join(required);
+                }
+            }
+
+            input.addEventListener('input', refresh);
+            refresh();
+
+            // Under-order → confirm dialog before saving (per requirement).
+            // Over-order → no dialog, yellow colour only.
+            form.addEventListener('submit', function (e) {
+                const qty = parseInt(input.value, 10);
+                if (required === null || isNaN(qty)) return;
+                if (qty < required) {
+                    const msg = ui.confirmTitle.split('__QTY__').join(qty).split('__REQ__').join(required) + '\n\n' + ui.confirmBody;
+                    const ok = window.confirm(msg);
+                    if (!ok) e.preventDefault();
+                }
+            });
+        })();
+    </script>
+}

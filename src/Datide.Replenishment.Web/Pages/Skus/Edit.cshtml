@@ -1,0 +1,50 @@
+@page
+@model Datide.Replenishment.Web.Pages.Skus.EditModel
+@{
+    ViewData["Title"] = @Localizer["Edit SKU — {0}", Model.Code];
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card"><div class="card-body p-4">
+            <h1 class="h4 mb-4">@Localizer["Edit SKU — {0}", Model.Code]</h1>
+
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label small fw-semibold"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger small"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="UnitPrice" class="form-label small fw-semibold"></label>
+                        <input asp-for="UnitPrice" class="form-control" />
+                        <span asp-validation-for="UnitPrice" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="ReorderPoint" class="form-label small fw-semibold"></label>
+                        <input asp-for="ReorderPoint" class="form-control" />
+                        <span asp-validation-for="ReorderPoint" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="MaxStock" class="form-label small fw-semibold"></label>
+                        <input asp-for="MaxStock" class="form-control" />
+                        <span asp-validation-for="MaxStock" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">@Localizer["Save changes"]</button>
+                    <a class="btn btn-outline-secondary" asp-page="Index">@Localizer["Cancel"]</a>
+                </div>
+            </form>
+        </div></div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

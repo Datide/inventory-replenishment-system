@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="(exceeds required)" xml:space="preserve">
+    <value>(exceeds required)</value>
+  </data>
+  <data name="(reference from when PO was created)" xml:space="preserve">
+    <value>(reference from when PO was created)</value>
+  </data>
+  <data name="Access denied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Already on order" xml:space="preserve">
+    <value>Already on order</value>
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value>Approvals</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Approving this PO would push {0} over its stock limit: current stock {1} + in-flight {2} = {3}, which exceeds the limit {4} by {5} units. Approval is blocked — reject this PO or ask staff to revise the quantity." xml:space="preserve">
+    <value>Approving this PO would push {0} over its stock limit: current stock {1} + in-flight {2} = {3}, which exceeds the limit {4} by {5} units. Approval is blocked — reject this PO or ask staff to revise the quantity.</value>
+  </data>
+  <data name="Back to Dashboard" xml:space="preserve">
+    <value>Back to Dashboard</value>
+  </data>
+  <data name="Back to POs" xml:space="preserve">
+    <value>Back to POs</value>
+  </data>
+  <data name="Below reorder" xml:space="preserve">
+    <value>Below reorder</value>
+  </data>
+  <data name="Below reorder point" xml:space="preserve">
+    <value>Below reorder point</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Cannot approve — exceeds stock limit" xml:space="preserve">
+    <value>Cannot approve — exceeds stock limit</value>
+  </data>
+  <data name="Check complete — {0} SKU(s) need replenishment." xml:space="preserve">
+    <value>Check complete — {0} SKU(s) need replenishment.</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Code &#x27;{0}&#x27; already exists." xml:space="preserve">
+    <value>Code &#x27;{0}&#x27; already exists.</value>
+  </data>
+  <data name="Create PO" xml:space="preserve">
+    <value>Create PO</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>Current</value>
+  </data>
+  <data name="Current stock levels" xml:space="preserve">
+    <value>Current stock levels</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="Demo accounts" xml:space="preserve">
+    <value>Demo accounts</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Download datide_export.xlsx" xml:space="preserve">
+    <value>Download datide_export.xlsx</value>
+  </data>
+  <data name="Downloads an .xlsx workbook with one sheet per table (SKUs, Users, Stock Snapshots, Purchase Orders)." xml:space="preserve">
+    <value>Downloads an .xlsx workbook with one sheet per table (SKUs, Users, Stock Snapshots, Purchase Orders).</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+  <data name="Draft — not yet submitted" xml:space="preserve">
+    <value>Draft — not yet submitted</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Edit PO {0}" xml:space="preserve">
+    <value>Edit PO {0}</value>
+  </data>
+  <data name="Edit Purchase Order" xml:space="preserve">
+    <value>Edit Purchase Order</value>
+  </data>
+  <data name="Edit SKU — {0}" xml:space="preserve">
+    <value>Edit SKU — {0}</value>
+  </data>
+  <data name="Exceeds stock limit" xml:space="preserve">
+    <value>Exceeds stock limit</value>
+  </data>
+  <data name="Exceeds system-required quantity" xml:space="preserve">
+    <value>Exceeds system-required quantity</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Export Excel" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="Export database to Excel" xml:space="preserve">
+    <value>Export database to Excel</value>
+  </data>
+  <data name="Gross need" xml:space="preserve">
+    <value>Gross need</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="Invalid username or password." xml:space="preserve">
+    <value>Invalid username or password.</value>
+  </data>
+  <data name="Inventory Dashboard" xml:space="preserve">
+    <value>Inventory Dashboard</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Limit" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="Log out" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="New PO" xml:space="preserve">
+    <value>New PO</value>
+  </data>
+  <data name="New Purchase Order" xml:space="preserve">
+    <value>New Purchase Order</value>
+  </data>
+  <data name="New SKU" xml:space="preserve">
+    <value>New SKU</value>
+  </data>
+  <data name="No open PO — safe to create." xml:space="preserve">
+    <value>No open PO — safe to create.</value>
+  </data>
+  <data name="No purchase orders awaiting approval." xml:space="preserve">
+    <value>No purchase orders awaiting approval.</value>
+  </data>
+  <data name="No purchase orders yet." xml:space="preserve">
+    <value>No purchase orders yet.</value>
+  </data>
+  <data name="No replenishment needed — all SKUs are healthy." xml:space="preserve">
+    <value>No replenishment needed — all SKUs are healthy.</value>
+  </data>
+  <data name="No system reference — SKU was not flagged for replenishment." xml:space="preserve">
+    <value>No system reference — SKU was not flagged for replenishment.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Only draft POs can be edited." xml:space="preserve">
+    <value>Only draft POs can be edited.</value>
+  </data>
+  <data name="Over-order" xml:space="preserve">
+    <value>Over-order</value>
+  </data>
+  <data name="PO" xml:space="preserve">
+    <value>PO</value>
+  </data>
+  <data name="PO #" xml:space="preserve">
+    <value>PO #</value>
+  </data>
+  <data name="PO Approvals" xml:space="preserve">
+    <value>PO Approvals</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Pending PO approvals" xml:space="preserve">
+    <value>Pending PO approvals</value>
+  </data>
+  <data name="Pending POs" xml:space="preserve">
+    <value>Pending POs</value>
+  </data>
+  <data name="Pending approval" xml:space="preserve">
+    <value>Pending approval</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Purchase Orders" xml:space="preserve">
+    <value>Purchase Orders</value>
+  </data>
+  <data name="Qty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Quantity ({0}) is LESS than the system-required amount ({1})." xml:space="preserve">
+    <value>Quantity ({0}) is LESS than the system-required amount ({1}).</value>
+  </data>
+  <data name="Quantity exceeds system-required amount" xml:space="preserve">
+    <value>Quantity exceeds system-required amount</value>
+  </data>
+  <data name="Quantity is below the system-required amount ({0}). You will be asked to confirm before saving." xml:space="preserve">
+    <value>Quantity is below the system-required amount ({0}). You will be asked to confirm before saving.</value>
+  </data>
+  <data name="Quantity must be greater than zero." xml:space="preserve">
+    <value>Quantity must be greater than zero.</value>
+  </data>
+  <data name="Reactivate" xml:space="preserve">
+    <value>Reactivate</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="Reason for rejection:" xml:space="preserve">
+    <value>Reason for rejection:</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="Rejected by manager" xml:space="preserve">
+    <value>Rejected by manager</value>
+  </data>
+  <data name="Reorder" xml:space="preserve">
+    <value>Reorder</value>
+  </data>
+  <data name="Replenishment decision system — sign in to continue" xml:space="preserve">
+    <value>Replenishment decision system — sign in to continue</value>
+  </data>
+  <data name="Replenishment suggestions" xml:space="preserve">
+    <value>Replenishment suggestions</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Requested at</value>
+  </data>
+  <data name="Requested by" xml:space="preserve">
+    <value>Requested by</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="Run Replenishment Check" xml:space="preserve">
+    <value>Run Replenishment Check</value>
+  </data>
+  <data name="SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="SKU Management" xml:space="preserve">
+    <value>SKU Management</value>
+  </data>
+  <data name="SKUs" xml:space="preserve">
+    <value>SKUs</value>
+  </data>
+  <data name="SKUs tracked" xml:space="preserve">
+    <value>SKUs tracked</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Save changes" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="Save draft" xml:space="preserve">
+    <value>Save draft</value>
+  </data>
+  <data name="Select a SKU to see its details." xml:space="preserve">
+    <value>Select a SKU to see its details.</value>
+  </data>
+  <data name="Selected SKU not found or inactive." xml:space="preserve">
+    <value>Selected SKU not found or inactive.</value>
+  </data>
+  <data name="Sign in" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Staff" xml:space="preserve">
+    <value>Staff</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Stock check" xml:space="preserve">
+    <value>Stock check</value>
+  </data>
+  <data name="Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s)." xml:space="preserve">
+    <value>Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s).</value>
+  </data>
+  <data name="Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s). Gross need {3} − already on order {4} = {5} remaining." xml:space="preserve">
+    <value>Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s). Gross need {3} − already on order {4} = {5} remaining.</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Submit for approval" xml:space="preserve">
+    <value>Submit for approval</value>
+  </data>
+  <data name="System required" xml:space="preserve">
+    <value>System required</value>
+  </data>
+  <data name="System required qty" xml:space="preserve">
+    <value>System required qty</value>
+  </data>
+  <data name="The order may not fully cover the need. Save anyway?" xml:space="preserve">
+    <value>The order may not fully cover the need. Save anyway?</value>
+  </data>
+  <data name="This PO is no longer a draft and cannot be edited." xml:space="preserve">
+    <value>This PO is no longer a draft and cannot be edited.</value>
+  </data>
+  <data name="This PO is no longer a draft." xml:space="preserve">
+    <value>This PO is no longer a draft.</value>
+  </data>
+  <data name="This SKU already has an open PO. Creating another will be blocked." xml:space="preserve">
+    <value>This SKU already has an open PO. Creating another will be blocked.</value>
+  </data>
+  <data name="This order is {0} units above the system-required amount ({1})." xml:space="preserve">
+    <value>This order is {0} units above the system-required amount ({1}).</value>
+  </data>
+  <data name="To order now" xml:space="preserve">
+    <value>To order now</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Total POs" xml:space="preserve">
+    <value>Total POs</value>
+  </data>
+  <data name="Unit price" xml:space="preserve">
+    <value>Unit price</value>
+  </data>
+  <data name="Unit price / Total" xml:space="preserve">
+    <value>Unit price / Total</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Username and password are required." xml:space="preserve">
+    <value>Username and password are required.</value>
+  </data>
+  <data name="You do not have permission to view this page." xml:space="preserve">
+    <value>You do not have permission to view this page.</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="e.g. SKU-1006" xml:space="preserve">
+    <value>e.g. SKU-1006</value>
+  </data>
+  <data name="in-flight" xml:space="preserve">
+    <value>in-flight</value>
+  </data>
+  <data name="⏸ {0} deactivated (history preserved)." xml:space="preserve">
+    <value>⏸ {0} deactivated (history preserved).</value>
+  </data>
+  <data name="⚠️ PO {0} is no longer pending — no change made." xml:space="preserve">
+    <value>⚠️ PO {0} is no longer pending — no change made.</value>
+  </data>
+  <data name="⚠️ PO {0} is not a draft." xml:space="preserve">
+    <value>⚠️ PO {0} is not a draft.</value>
+  </data>
+  <data name="⚠️ Quantity exceeds the system-required amount ({0}). This PO is flagged as an over-order." xml:space="preserve">
+    <value>⚠️ Quantity exceeds the system-required amount ({0}). This PO is flagged as an over-order.</value>
+  </data>
+  <data name="⚠️ {0} already has a draft/pending PO — edit that instead of creating another." xml:space="preserve">
+    <value>⚠️ {0} already has a draft/pending PO — edit that instead of creating another.</value>
+  </data>
+  <data name="⚠️ {0} already has a draft/pending PO. Edit that PO instead of creating another." xml:space="preserve">
+    <value>⚠️ {0} already has a draft/pending PO. Edit that PO instead of creating another.</value>
+  </data>
+  <data name="✅ PO {0} approved ({1} × {2})." xml:space="preserve">
+    <value>✅ PO {0} approved ({1} × {2}).</value>
+  </data>
+  <data name="✅ PO {0} quantity updated to {1}." xml:space="preserve">
+    <value>✅ PO {0} quantity updated to {1}.</value>
+  </data>
+  <data name="✅ {0} reactivated." xml:space="preserve">
+    <value>✅ {0} reactivated.</value>
+  </data>
+  <data name="❌ PO {0} NOT approved — it would push {1} over its stock limit. Current stock {2} + in-flight {3} = {4} exceeds limit {5} by {6}. Reject or ask staff to revise." xml:space="preserve">
+    <value>❌ PO {0} NOT approved — it would push {1} over its stock limit. Current stock {2} + in-flight {3} = {4} exceeds limit {5} by {6}. Reject or ask staff to revise.</value>
+  </data>
+  <data name="❌ PO {0} rejected." xml:space="preserve">
+    <value>❌ PO {0} rejected.</value>
+  </data>
+  <data name="📤 PO {0} submitted for approval." xml:space="preserve">
+    <value>📤 PO {0} submitted for approval.</value>
+  </data>
+</root>

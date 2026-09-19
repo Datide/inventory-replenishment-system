@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Datide.Replenishment.Application/Datide.Replenishment.Application.csproj" />
+    <Project Path="src/Datide.Replenishment.Domain/Datide.Replenishment.Domain.csproj" />
+    <Project Path="src/Datide.Replenishment.Infrastructure/Datide.Replenishment.Infrastructure.csproj" />
+    <Project Path="src/Datide.Replenishment.Web/Datide.Replenishment.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Datide.Replenishment.UnitTests/Datide.Replenishment.UnitTests.csproj" />
+  </Folder>
+</Solution>

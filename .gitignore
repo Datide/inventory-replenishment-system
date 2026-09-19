@@ -1,0 +1,11 @@
+# Build output
+bin/
+obj/
+
+# IDE
+.vs/
+*.user
+
+# Local SQLite database (auto-created; seed on first run)
+src/Datide.Replenishment.Web/App_Data/
+

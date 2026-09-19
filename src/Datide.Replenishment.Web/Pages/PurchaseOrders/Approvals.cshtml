@@ -1,0 +1,138 @@
+@page
+@model Datide.Replenishment.Web.Pages.PurchaseOrders.ApprovalsModel
+@{
+    ViewData["Title"] = @Localizer["PO Approvals"];
+}
+
+<style>
+    .is-warning { background-color: #fff3cd !important; }
+    .qty-over { font-weight: 700; }
+    .limit-block { border-left: 4px solid #dc3545 !important; }
+</style>
+
+<h1 class="h3 mb-4">@Localizer["PO Approvals"]</h1>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success py-2 small">@Model.Message</div>
+}
+
+@if (Model.PendingOrders.Count == 0)
+{
+    <div class="card"><div class="card-body text-center text-muted py-5">
+        <i class="bi bi-check2-circle display-4"></i>
+        <p class="mt-2 mb-0">@Localizer["No purchase orders awaiting approval."]</p>
+    </div></div>
+}
+else
+{
+    var rejectPrompt = Localizer["Reason for rejection:"].Value;
+    @foreach (var item in Model.PendingOrders)
+    {
+        var p = item.Po;
+        var blocked = item.IsBlockedByStockLimit;
+        <div class="card mb-3 @(blocked ? "limit-block" : "")"><div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <span class="badge badge-pending">@Localizer["Pending"]</span>
+                        <strong>@p.SkuCode</strong>
+                        <span class="text-muted small"><code>@p.Id.ToString("N")[..8]</code></span>
+                        @if (p.IsOverRequired)
+                        {
+                            <span class="badge badge-pending" title="@Localizer["Quantity exceeds system-required amount"]">
+                                ⚠️ @Localizer["Over-order"]
+                            </span>
+                        }
+                        @if (blocked)
+                        {
+                            <span class="badge badge-rejected">⛔ @Localizer["Exceeds stock limit"]</span>
+                        }
+                    </div>
+                    <div class="small text-muted">
+                        @Localizer["Requested by"] <strong>@p.RequestedByUsername</strong> @Localizer["at"] @p.RequestedAt.ToLocalTime():g
+                    </div>
+
+                    <table class="table table-sm mt-2 mb-0 w-auto">
+                        <tr>
+                            <td class="text-muted small pe-3">@Localizer["Quantity"]</td>
+                            <td class="@(p.IsOverRequired ? "is-warning qty-over" : "")">
+                                @p.Quantity
+                                @if (p.IsOverRequired)
+                                {
+                                    <span class="small text-muted">@Localizer["(exceeds required)"]</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted small pe-3">@Localizer["System required"]</td>
+                            <td>@(p.RequiredQuantity?.ToString() ?? "—")</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted small pe-3">@Localizer["Unit price / Total"]</td>
+                            <td>@p.UnitPrice.ToString("C") → <strong>@p.Total.ToString("C")</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted small pe-3">@Localizer["Stock check"]</td>
+                            <td>
+                                @Localizer["Current"] <strong>@item.Limit.CurrentStock</strong> +
+                                @Localizer["in-flight"] <strong>@item.Limit.InFlight</strong> =
+                                <strong>@item.Limit.ProjectedTotal</strong>
+                                / @Localizer["Limit"] <strong>@item.Limit.MaxStock</strong>
+                            </td>
+                        </tr>
+                    </table>
+
+                    @if (p.IsOverRequired)
+                    {
+                        var overBy = p.Quantity - (p.RequiredQuantity ?? p.Quantity);
+                        <div class="alert alert-warning py-2 small mb-2 mt-2">
+                            ⚠️ @Localizer["This order is {0} units above the system-required amount ({1}).", overBy, (p.RequiredQuantity?.ToString() ?? "n/a")]
+                        </div>
+                    }
+                    @if (blocked)
+                    {
+                        <div class="alert alert-danger py-2 small mb-2 mt-2">
+                            ⛔ @Localizer[
+                                "Approving this PO would push {0} over its stock limit: " +
+                                "current stock {1} + in-flight {2} = {3}, which exceeds the limit {4} by {5} units. " +
+                                "Approval is blocked — reject this PO or ask staff to revise the quantity.",
+                                p.SkuCode, item.Limit.CurrentStock, item.Limit.InFlight,
+                                item.Limit.ProjectedTotal, item.Limit.MaxStock, item.Limit.OverBy]
+                        </div>
+                    }
+                </div>
+                <div class="d-flex gap-2">
+                    @if (blocked)
+                    {
+                        <button class="btn btn-secondary" disabled title="@Localizer["Cannot approve — exceeds stock limit"]">
+                            <i class="bi bi-check-lg me-1"></i>@Localizer["Approve"]
+                        </button>
+                    }
+                    else
+                    {
+                        <form method="post" asp-page-handler="Approve" asp-route-id="@p.Id">
+                            <button class="btn btn-success"><i class="bi bi-check-lg me-1"></i>@Localizer["Approve"]</button>
+                        </form>
+                    }
+                    <form method="post" asp-page-handler="Reject" asp-route-id="@p.Id"
+                          onsubmit="return promptForReason(event, '@p.Id', '@rejectPrompt')">
+                        <button class="btn btn-outline-danger"><i class="bi bi-x-lg me-1"></i>@Localizer["Reject"]</button>
+                        <input type="hidden" name="reason" id="reason-@p.Id" />
+                    </form>
+                </div>
+            </div>
+        </div></div>
+    }
+}
+
+@section Scripts {
+    <script>
+        function promptForReason(event, id, promptText) {
+            const reason = prompt(promptText);
+            if (reason === null) { event.preventDefault(); return false; }
+            document.getElementById('reason-' + id).value = reason;
+            return true;
+        }
+    </script>
+}

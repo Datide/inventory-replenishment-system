@@ -1,0 +1,124 @@
+@page
+@model Datide.Replenishment.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = @Localizer["Dashboard"];
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">@Localizer["Inventory Dashboard"]</h1>
+    <form method="post" asp-page-handler="RunCheck">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-play-fill me-1"></i>@Localizer["Run Replenishment Check"]</button>
+    </form>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info py-2 small">@Model.Message</div>
+}
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card kpi-card"><div class="card-body">
+            <div class="text-muted small">@Localizer["SKUs tracked"]</div>
+            <div class="display-6">@Model.TotalSkus</div>
+        </div></div>
+    </div>
+    <div class="col-md-4">
+        <div class="card kpi-card"><div class="card-body">
+            <div class="text-muted small">@Localizer["Below reorder point"]</div>
+            <div class="display-6 text-danger">@Model.LowCount</div>
+        </div></div>
+    </div>
+    <div class="col-md-4">
+        <div class="card kpi-card"><div class="card-body">
+            <div class="text-muted small">@Localizer["Pending PO approvals"]</div>
+            <div class="display-6 text-warning">@Model.PendingApprovalCount</div>
+        </div></div>
+    </div>
+</div>
+
+@if (Model.Suggestions.Count > 0)
+{
+    <div class="card mb-4"><div class="card-body">
+        <h2 class="h6 text-uppercase text-muted mb-3">@Localizer["Replenishment suggestions"]</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead><tr>
+                    <th>@Localizer["SKU"]</th><th>@Localizer["Gross need"]</th><th>@Localizer["Already on order"]</th><th>@Localizer["To order now"]</th><th>@Localizer["Reason"]</th><th>@Localizer["Action"]</th>
+                </tr></thead>
+                <tbody>
+                @foreach (var s in Model.Suggestions)
+                {
+                    <tr>
+                        <td><strong>@s.Sku</strong></td>
+                        <td>@s.GrossNeed</td>
+                        <td>
+                            @if (s.AlreadyOnOrder > 0)
+                            {
+                                <span class="badge badge-pending">@s.AlreadyOnOrder @Localizer["in-flight"]</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">—</span>
+                            }
+                        </td>
+                        <td class="fw-bold text-primary">+@s.Quantity</td>
+                        <td class="small text-muted">
+                            @if (s.AlreadyOnOrder > 0)
+                            {
+                                @Localizer["Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s). Gross need {3} − already on order {4} = {5} remaining.",
+                                    s.CurrentStock, s.ReorderPoint, s.ConsecutiveDays, s.GrossNeed, s.AlreadyOnOrder, s.Quantity]
+                            }
+                            else
+                            {
+                                @Localizer["Stock {0} is at or below the reorder point ({1}) for {2} consecutive day(s).",
+                                    s.CurrentStock, s.ReorderPoint, s.ConsecutiveDays]
+                            }
+                        </td>
+                        <td>
+                            @if (s.HasPendingPo)
+                            {
+                                <span class="badge badge-pending"><i class="bi bi-hourglass-split me-1"></i>@Localizer["Pending approval"]</span>
+                            }
+                            else
+                            {
+                                <form method="post" asp-page-handler="CreatePo" asp-route-sku="@s.Sku" asp-route-qty="@s.Quantity">
+                                    <button class="btn btn-sm btn-outline-success">@Localizer["Create PO"]</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div></div>
+}
+
+<div class="card"><div class="card-body">
+    <h2 class="h6 text-uppercase text-muted mb-3">@Localizer["Current stock levels"]</h2>
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead><tr>
+                <th>@Localizer["SKU"]</th><th>@Localizer["Status"]</th><th>@Localizer["Current"]</th><th>@Localizer["Reorder"]</th><th>@Localizer["Max"]</th><th>@Localizer["Pending POs"]</th><th>@Localizer["Total POs"]</th>
+            </tr></thead>
+            <tbody>
+            @foreach (var row in Model.StockRows)
+            {
+                <tr>
+                    <td><strong>@row.Code</strong><div class="small text-muted">@row.Description</div></td>
+                    <td>
+                        @if (row.IsBelowReorder) { <span class="badge badge-low">@Localizer["Below reorder"]</span> }
+                        else { <span class="badge badge-ok">@Localizer["OK"]</span> }
+                    </td>
+                    <td>@row.CurrentStock</td>
+                    <td>@row.ReorderPoint</td>
+                    <td>@row.MaxStock</td>
+                    <td>@row.PendingPoCount</td>
+                    <td>@row.TotalPoCount</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div></div>

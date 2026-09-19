@@ -1,0 +1,39 @@
+@page
+@model Datide.Replenishment.Web.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = @Localizer["Sign in"];
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5 col-lg-4">
+        <div class="card">
+            <div class="card-body p-4">
+                <h4 class="mb-1 fw-bold"><i class="bi bi-box-seam me-2 text-primary"></i>Datide Inventory</h4>
+                <p class="text-muted small mb-4">@Localizer["Replenishment decision system — sign in to continue"]</p>
+
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-danger py-2 small">@Model.ErrorMessage</div>
+                }
+
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">@Localizer["Username"]</label>
+                        <input asp-for="Username" class="form-control" autocomplete="username" autofocus />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">@Localizer["Password"]</label>
+                        <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">@Localizer["Sign in"]</button>
+                </form>
+
+                <div class="alert alert-light border mt-4 mb-0 small">
+                    <strong>@Localizer["Demo accounts"]</strong><br />
+                    @Localizer["Manager"]: <code>manager / Manager@123</code><br />
+                    @Localizer["Staff"]: <code>staff / Staff@123</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

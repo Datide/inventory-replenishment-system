@@ -1,0 +1,67 @@
+@page
+@model Datide.Replenishment.Web.Pages.PurchaseOrders.CreateModel
+@{
+    ViewData["Title"] = @Localizer["New Purchase Order"];
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card"><div class="card-body p-4">
+            <h1 class="h4 mb-4">@Localizer["New Purchase Order"]</h1>
+
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger py-2 small">@Model.ErrorMessage</div>
+            }
+
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold">@Localizer["SKU"]</label>
+                    <select asp-for="SkuCode" class="form-select" asp-items="Model.SkuOptions"></select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Quantity" class="form-label small fw-semibold"></label>
+                    <input asp-for="Quantity" class="form-control" type="number" min="1" />
+                </div>
+                <div class="alert alert-light border small mb-4" id="skuInfo">
+                    @Localizer["Select a SKU to see its details."]
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">@Localizer["Create PO"]</button>
+                    <a class="btn btn-outline-secondary" asp-page="Index">@Localizer["Cancel"]</a>
+                </div>
+            </form>
+        </div></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const skuData = @Html.Raw(Model.SkuJson);
+        const ui = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(new {
+            selectPrompt = Localizer["Select a SKU to see its details."].Value,
+            current = Localizer["Current"].Value,
+            reorder = Localizer["Reorder"].Value,
+            max = Localizer["Max"].Value,
+            price = Localizer["Price"].Value,
+            hasOpen = Localizer["This SKU already has an open PO. Creating another will be blocked."].Value,
+            noOpen = Localizer["No open PO — safe to create."].Value,
+        }));
+        const sel = document.getElementById('SkuCode');
+        const info = document.getElementById('skuInfo');
+        function updateInfo() {
+            const s = skuData[sel.value];
+            if (!s) { info.textContent = ui.selectPrompt; return; }
+            let html = `<strong>${s.code}</strong> — ${s.description}<br>
+                ${ui.current}: ${s.current} | ${ui.reorder}: ${s.reorder} | ${ui.max}: ${s.max} | ${ui.price}: $${s.price}`;
+            if (s.openCount > 0) {
+                html += `<br><span class="text-danger fw-semibold">⚠️ ${ui.hasOpen}</span>`;
+            } else {
+                html += `<br><span class="text-success">${ui.noOpen}</span>`;
+            }
+            info.innerHTML = html;
+        }
+        sel.addEventListener('change', updateInfo);
+        updateInfo();
+    </script>
+}

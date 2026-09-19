@@ -1,0 +1,51 @@
+@page
+@model Datide.Replenishment.Web.Pages.Skus.IndexModel
+@{
+    ViewData["Title"] = @Localizer["SKUs"];
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">@Localizer["SKU Management"]</h1>
+    <a class="btn btn-primary" asp-page="Create"><i class="bi bi-plus-lg me-1"></i>@Localizer["New SKU"]</a>
+</div>
+
+<div class="card"><div class="card-body">
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead><tr>
+                <th>@Localizer["Code"]</th><th>@Localizer["Description"]</th><th>@Localizer["Unit price"]</th><th>@Localizer["Reorder"]</th><th>@Localizer["Max"]</th><th>@Localizer["Active"]</th><th>@Localizer["Created"]</th><th></th>
+            </tr></thead>
+            <tbody>
+            @foreach (var s in Model.Skus)
+            {
+                <tr class="@(s.IsActive ? "" : "table-secondary")">
+                    <td><strong>@s.Code</strong></td>
+                    <td>@s.Description</td>
+                    <td>@s.UnitPrice.ToString("C")</td>
+                    <td>@s.ReorderPoint</td>
+                    <td>@s.MaxStock</td>
+                    <td>
+                        @if (s.IsActive)
+                        {
+                            <span class="badge badge-ok">@Localizer["Active"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-rejected">@Localizer["Inactive"]</span>
+                        }
+                    </td>
+                    <td class="small text-muted">@s.CreatedAt.ToLocalTime():d</td>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-secondary" asp-page="Edit" asp-route-id="@s.Id"><i class="bi bi-pencil"></i></a>
+                        <form method="post" asp-page-handler="Toggle" asp-route-id="@s.Id" class="d-inline">
+                            <button class="btn btn-sm @(s.IsActive ? "btn-outline-danger" : "btn-outline-success")" title="@(s.IsActive ? Localizer["Deactivate"] : Localizer["Reactivate"])">
+                                @if (s.IsActive) { <i class="bi bi-pause-circle"></i> } else { <i class="bi bi-play-circle"></i> }
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div></div>

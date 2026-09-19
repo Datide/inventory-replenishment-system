@@ -1,0 +1,94 @@
+@page
+@model Datide.Replenishment.Web.Pages.PurchaseOrders.IndexModel
+@{
+    ViewData["Title"] = @Localizer["Purchase Orders"];
+}
+
+<style>
+    .is-warning { background-color: #fff3cd !important; }
+    .qty-over { font-weight: 700; }
+    .warn-tag { font-size: .72rem; vertical-align: middle; }
+</style>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">@Localizer["Purchase Orders"]</h1>
+    <div>
+        <a class="btn btn-primary" asp-page="Create"><i class="bi bi-plus-lg me-1"></i>@Localizer["New PO"]</a>
+        <a class="btn btn-outline-secondary" asp-page="Export"><i class="bi bi-file-earmark-excel me-1"></i>@Localizer["Export Excel"]</a>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info py-2 small">@Model.Message</div>
+}
+
+<div class="card"><div class="card-body">
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead><tr>
+                <th>@Localizer["PO #"]</th>
+                <th>@Localizer["SKU"]</th>
+                <th>@Localizer["Qty"]</th>
+                <th>@Localizer["Required"]</th>
+                <th>@Localizer["Unit price"]</th>
+                <th>@Localizer["Total"]</th>
+                <th>@Localizer["Status"]</th>
+                <th>@Localizer["Requested by"]</th>
+                <th>@Localizer["Requested at"]</th>
+                <th></th>
+            </tr></thead>
+            <tbody>
+            @foreach (var p in Model.Orders)
+            {
+                <tr>
+                    <td class="small text-muted"><code>@p.Id.ToString("N")[..8]</code></td>
+                    <td><strong>@p.SkuCode</strong></td>
+                    <td class="@(p.IsOverRequired ? "is-warning qty-over" : "")">
+                        @p.Quantity
+                        @if (p.IsOverRequired)
+                        {
+                            <span class="badge badge-pending warn-tag ms-1" title="@Localizer["Exceeds system-required quantity"]">
+                                @Localizer["Over-order"]
+                            </span>
+                        }
+                    </td>
+                    <td class="text-muted small">@(p.RequiredQuantity?.ToString() ?? "—")</td>
+                    <td>@p.UnitPrice.ToString("C")</td>
+                    <td class="fw-semibold">@p.Total.ToString("C")</td>
+                    <td>
+                        @switch (p.Status)
+                        {
+                            case PurchaseOrderStatus.Draft: <span class="badge badge-pending">@Localizer["Draft"]</span> break;
+                            case PurchaseOrderStatus.Pending: <span class="badge badge-pending">@Localizer["Pending"]</span> break;
+                            case PurchaseOrderStatus.Approved: <span class="badge badge-approved">@Localizer["Approved"]</span> break;
+                            case PurchaseOrderStatus.Rejected: <span class="badge badge-rejected">@Localizer["Rejected"]</span> break;
+                        }
+                        @if (p.Status == PurchaseOrderStatus.Rejected && !string.IsNullOrEmpty(p.RejectReason))
+                        {
+                            <div class="small text-muted">@p.RejectReason</div>
+                        }
+                    </td>
+                    <td>@p.RequestedByUsername</td>
+                    <td class="small text-muted">@p.RequestedAt.ToLocalTime():g</td>
+                    <td class="text-end">
+                        @if (p.Status == PurchaseOrderStatus.Draft)
+                        {
+                            <a class="btn btn-sm btn-outline-secondary" asp-page="Edit" asp-route-id="@p.Id">
+                                <i class="bi bi-pencil"></i> @Localizer["Edit"]
+                            </a>
+                            <form method="post" asp-page-handler="Submit" asp-route-id="@p.Id" class="d-inline">
+                                <button class="btn btn-sm btn-outline-success">📤 @Localizer["Submit"]</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+            @if (Model.Orders.Count == 0)
+            {
+                <tr><td colspan="10" class="text-center text-muted py-4">@Localizer["No purchase orders yet."]</td></tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div></div>
