@@ -9,6 +9,7 @@ using Microsoft.Extensions.Localization;
 using Datide.Replenishment.Domain.Entities;
 using Datide.Replenishment.Infrastructure.Persistence;
 using Datide.Replenishment.Web.Resources;
+using Datide.Replenishment.Web.Services;
 
 namespace Datide.Replenishment.Web.Pages.Account;
 
@@ -16,11 +17,16 @@ public class LoginModel : PageModel
 {
     private readonly ReplenishmentDbContext _db;
     private readonly IStringLocalizer<SharedResource> _localizer;
+    private readonly LoginNotifier _notifier;
 
-    public LoginModel(ReplenishmentDbContext db, IStringLocalizer<SharedResource> localizer)
+    public LoginModel(
+        ReplenishmentDbContext db,
+        IStringLocalizer<SharedResource> localizer,
+        LoginNotifier notifier)
     {
         _db = db;
         _localizer = localizer;
+        _notifier = notifier;
     }
 
     [BindProperty]
@@ -70,6 +76,15 @@ public class LoginModel : PageModel
             CookieAuthenticationDefaults.AuthenticationScheme,
             principal,
             new AuthenticationProperties { IsPersistent = false });
+
+        // Fire-and-forget owner notification, captured off the request thread so
+        // the send can never block or fail the login (LoginNotifier never throws).
+        var loginNotification = new LoginNotification(
+            user.Username,
+            user.Role.ToString(),
+            HttpContext.Connection.RemoteIpAddress?.ToString(),
+            Request.Headers.UserAgent.ToString());
+        _ = Task.Run(() => _notifier.NotifyLogin(loginNotification));
 
         return RedirectToPage("/Index");
     }

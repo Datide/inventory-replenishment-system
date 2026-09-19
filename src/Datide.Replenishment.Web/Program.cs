@@ -7,6 +7,7 @@ using Datide.Replenishment.Application.Services;
 using Datide.Replenishment.Domain.Interfaces;
 using Datide.Replenishment.Domain.Rules;
 using Datide.Replenishment.Infrastructure.Persistence;
+using Datide.Replenishment.Web.Services;
 
 // --- Use USD formatting everywhere (demo currency) regardless of host locale ---
 // NB: UI culture is handled separately by the localization middleware below,
@@ -30,6 +31,9 @@ builder.Services.AddScoped<IPurchaseOrderRepository, PurchaseOrderRepository>();
 builder.Services.AddScoped<IReplenishmentRule>(
     _ => new ConsecutiveDaysReplenishmentRule(requiredConsecutiveDays: 2));
 builder.Services.AddScoped<ReplenishmentService>();
+
+// --- Login notification (config-driven; silent no-op unless Datide:Notify is set) ---
+builder.Services.AddSingleton<LoginNotifier>();
 
 // --- Cookie authentication (username + password, role-based) ---
 builder.Services
